@@ -25,11 +25,12 @@ to
 ```
 
 ## Controls ##
-	* **Mouse Motion** rotate the camera
-	* **w,a,s,d, arrow keys** move the camera
-	* **Mouse Wheel, +, -** change the movement speed
-	* **q,e** rotate the camera around the *"viewing at"* axis
-	* **f** toggle FPS camera mode
+
+  * **Mouse Motion** rotate the camera
+  * **w,a,s,d, arrow keys** move the camera
+  * **Mouse Wheel, +, -** change the movement speed
+  * **q,e** rotate the camera around the *"viewing at"* axis
+  * **f** toggle FPS camera mode
   * **v** increase FOV
   * **b** decrease FOV
   * **i** save the current rendered screen in the format `render_{CURRENT_TIME}_{SAMPLE_COUNT_PER_PIXEL}_Spp.bmp`
