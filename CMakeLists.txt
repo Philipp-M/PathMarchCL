@@ -1,0 +1,49 @@
+cmake_minimum_required(VERSION 2.6)
+project(PathMarchCL)
+
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wno-ignored-attributes")
+SET(EXECUTABLE PathMarchCL)
+
+# find SDL2
+FIND_PACKAGE(SDL2 REQUIRED)
+FIND_PACKAGE(SDL2_ttf REQUIRED)
+#find_package(SDL2_image REQUIRED)
+# find OpenGL
+FIND_PACKAGE(OpenGL REQUIRED)
+ADD_DEFINITIONS(${OpenGL_DEFINITIONS})
+# find OpenCL
+FIND_PACKAGE(OpenCL REQUIRED)
+# find GLEW
+FIND_PACKAGE(GLEW REQUIRED)
+# find GLM
+FIND_PACKAGE(GLM REQUIRED)
+
+SET(SOURCE_FILES
+  src/main.cpp
+  src/App.cpp
+  src/Shader.cpp
+  src/ShaderProgram.cpp
+  src/OGLRenderer.cpp
+  src/OCLRenderer.cpp
+  src/CLUtils.cpp
+  src/StatusBar.cpp)
+
+ADD_EXECUTABLE(${EXECUTABLE} ${SOURCE_FILES})
+
+TARGET_INCLUDE_DIRECTORIES(${EXECUTABLE} PUBLIC
+  include
+  ${GLM_INCLUDE_DIR}
+  ${GLEW_INCLUDE_DIRS}
+  ${OpenGL_INCLUDE_DIRS}
+  ${OpenCL_INCLUDE_DIRS}
+  ${SDL2_INCLUDE_DIR}
+  ${SDL2TTF_INCLUDE_DIR})
+
+TARGET_LINK_LIBRARIES(${EXECUTABLE}
+  ${OPENGL_LIBRARIES}
+  ${OpenCL_LIBRARIES}
+  ${GLUT_LIBRARY}
+  ${GLEW_LIBRARIES}
+  ${SDL2_LIBRARY}
+  ${SDL2TTF_LIBRARY})
